@@ -1,0 +1,215 @@
+.form-control.is-valid {
+  background-position: center right calc(1.375em + .1875rem) !important;
+}
+
+.form-control.is-invalid {
+  background-position: center right calc(1.375em + .1875rem) !important;
+}
+
+.input-group > .custom-file:not(:last-child) .custom-file-label::after {
+  content: "Buscar";
+}
+
+#load{
+  display: none;
+  width: 50px;
+  margin-left: calc((100% - 50px) / 2);
+  margin-bottom: 1%;
+}
+
+.loading{
+  width: 35px;
+}
+
+#load2{
+  display: none;
+  width: 35px;
+  margin-left: calc((100% - 35px) / 2);
+  margin-bottom: 1%;
+}
+
+.loading2{
+  width: 35px;
+}
+
+#load3{
+  display: none;
+  width: 35px;
+  margin-left: calc((100% - 35px) / 2);
+  margin-bottom: 1%;
+}
+
+.loading3{
+  width: 35px;
+}
+
+.imgOk{
+  width: 100%;
+}
+
+.imgPopUp{
+  width: 20%;
+  margin-left: calc((100% - 20%)/2);
+}
+
+.alertText{
+	padding: 5px; 
+	border: 1px solid #007bff;
+}
+
+.imgFail{
+  width: 60%;
+  margin: 20%;
+}
+
+.fontP{
+  font-size: 16px;
+  margin-top: 4%;
+}
+
+.fontP2{
+  font-size: 13px;
+}
+
+.fontP3{
+  font-size: 20px;
+}
+
+.separator{
+  border: solid 1px #ccc;
+  width: 100%;
+}
+
+.imgPdf{
+  margin-left: calc((100% - 64px) / 2);
+}
+
+.detail{
+	margin-left: calc((100% - 32px) / 2);
+}
+
+#menuTittle{
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  #rg {
+    margin-top: 10px;
+  }
+  
+  #menuTittle{
+    display: block;
+  }
+
+  #pdd{
+    padding: .5rem 0rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+	.support{
+		display: none;
+	}
+	.PopUp{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 750px) {
+  .support{
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    width: 350px;
+    height: 130px;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    animation-name: toLeft;
+    animation-duration: 2s;
+	display: none;
+  }
+
+  @keyframes toLeft {
+    0%   {right:-350px; top:20px;}
+    100% {right:10px; top:20px;}
+  }
+
+  .supportFiles{
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    width: 350px;
+    height: 160px;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    animation-name: toRight;
+    animation-duration: 2s;
+	display: none;
+  }
+
+  @keyframes toRight {
+    0%   {left:-350px; top:20px;}
+    100% {left:10px; top:20px;}
+  }
+
+  .support-head{
+    width: 35px;
+    margin: 5px;
+    float: left;
+  }
+
+  .support-img{
+    width: 100%;
+  }
+
+  .support-tittle{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-left: 10px;
+  }
+
+  .support-text{
+    margin: 50px 5px 0px 5px;
+    text-align: justify;
+	font-size: 14px;
+  }
+
+  .support-close{
+    width: 12px;
+    height: 10px;
+    position: absolute;
+    right: 3px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+	top: -3px;
+  }
+
+  .support-header{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #007bff;
+  }
+  .PopUp{
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    width: 400px;
+    height: 180px;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    animation-name: toLeft;
+    animation-duration: 2s;
+	background-color: #fff;
+  }
+    .popup-tittle{
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+}
