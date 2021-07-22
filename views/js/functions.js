@@ -48,7 +48,15 @@ function loadData()
 			if(conexion.readyState == 4) {
 				if(conexion.status == 200) {
 					if (conexion.responseText != ""){
-						if(conexion.responseText != "200201"){
+						if(conexion.responseText == "200201"){
+							$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
+							$('#resultfrm').html("No se reconoce la especialidad para la generación del Índice. Contacte a Ingeniería CSJCF.");
+							cleanAlert();
+						} else if(conexion.responseText == "300301"){
+							$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
+							$('#resultfrm').html("No se encontró un proceso relacionado con ese radicado. Verifique e intente de nuevo.");
+							cleanAlert();
+						} else {
 							var vect = conexion.responseText.split("////");
 							if(vect[0].trim() != ""){
 								document.getElementById("despacho").value = vect[0];
@@ -70,10 +78,6 @@ function loadData()
 							} else {
 								document.getElementById("partes2").value = "";
 							}
-						} else{
-							$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
-							$('#resultfrm').html("No se reconoce la especialidad para la generación del Índice. Contacte a Ingeniería CSJCF.");
-							cleanAlert();
 						}
 					}
 				}

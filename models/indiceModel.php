@@ -18,8 +18,8 @@ class indiceModel extends modelBase{
 		$body = "";
 
 		//----------------------------------------------------------------------------------Arreglos de Especialidad-----------------------------------------------------------------------
-		$vect_tca = array("XXXX");
-		$vect_disc = array("XXXX");
+		$vect_tca = array("2315");
+		$vect_disc = array("1102");
 		$vect_jepms = array("3187");
 		$vect_penal = array("4088", "4071", "4009", "4004", "4018", "4007");
 		$vect_laboral = array("3105", "2205", "4105");
@@ -67,16 +67,16 @@ class indiceModel extends modelBase{
 			//---------------------------------------------------------------- Información del proceso-----------------------------------------------------------------
 			header('Content-Type: text/html; charset=UTF-8');
 			$query_Actu = ("
-			  SELECT
-			  info_pro.[A103NOMBPONE] AS juzgado
-			  ,pro_tipo.[A052DESCPROC] AS tipoProceso
-			  ,pro_clas.[A053DESCCLAS] AS claseProceso
-			  ,sub_clas.[A071DESCSUBC] AS subClaseProceso
-			  FROM [$datosbd_2].[dbo].[T103DAINFOPROC] AS info_pro
-			  INNER JOIN [$datosbd_2].[dbo].[T053BACLASGENE] AS pro_clas ON info_pro.[A103CODICLAS] = pro_clas.[A053CODICLAS]
-			  INNER JOIN [$datosbd_2].[dbo].[T052BAPROCGENE] AS pro_tipo ON info_pro.[A103CODIPROC] = pro_tipo.[A052CODIPROC]
-			  INNER JOIN [$datosbd_2].[dbo].[T071BASUBCGENE] AS sub_clas ON info_pro.[A103CODISUBC] = sub_clas.[A071CODISUBC]
-			  WHERE info_pro.[A103LLAVPROC] like '$radicado'
+			SELECT
+			info_pro.[A103NOMBPONE] AS juzgado
+			,pro_tipo.[A052DESCPROC] AS tipoProceso
+			,pro_clas.[A053DESCCLAS] AS claseProceso
+			,sub_clas.[A071DESCSUBC] AS subClaseProceso
+			FROM [$datosbd_2].[dbo].[T103DAINFOPROC] AS info_pro
+			INNER JOIN [$datosbd_2].[dbo].[T053BACLASGENE] AS pro_clas ON info_pro.[A103CODICLAS] = pro_clas.[A053CODICLAS]
+			INNER JOIN [$datosbd_2].[dbo].[T052BAPROCGENE] AS pro_tipo ON info_pro.[A103CODIPROC] = pro_tipo.[A052CODIPROC]
+			INNER JOIN [$datosbd_2].[dbo].[T071BASUBCGENE] AS sub_clas ON info_pro.[A103CODISUBC] = sub_clas.[A071CODISUBC]
+			WHERE info_pro.[A103LLAVPROC] like '$radicado'
 			");
 			$paramsQ  = array();
 			$optionsQ = array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
@@ -85,14 +85,14 @@ class indiceModel extends modelBase{
 			//------------------------------------------------------------------- Accionantes del proceso--------------------------------------------------------------------
 
 			$sql_partes = ("
-			  SELECT
-			  info_suje.[A112NUMESUJE] AS cedula
-			  ,info_suje.[A112NOMBSUJE] AS nombre
-			  ,tipo_suje.[A057DESCSUJE] AS tipo
-			  FROM [$datosbd_2].[dbo].[T112DRSUJEPROC] AS info_suje
-			  INNER JOIN [$datosbd_2].[dbo].[T057BASUJEGENE] AS tipo_suje ON info_suje.[A112CODISUJE] = tipo_suje.A057CODISUJE
-			  WHERE info_suje.[A112LLAVPROC] = "."'$radicado'"."
-			  AND info_suje.[A112CODISUJE] = '0001';
+			SELECT
+			info_suje.[A112NUMESUJE] AS cedula
+			,info_suje.[A112NOMBSUJE] AS nombre
+			,tipo_suje.[A057DESCSUJE] AS tipo
+			FROM [$datosbd_2].[dbo].[T112DRSUJEPROC] AS info_suje
+			INNER JOIN [$datosbd_2].[dbo].[T057BASUJEGENE] AS tipo_suje ON info_suje.[A112CODISUJE] = tipo_suje.A057CODISUJE
+			WHERE info_suje.[A112LLAVPROC] = "."'$radicado'"."
+			AND info_suje.[A112CODISUJE] = '0001';
 			");
 			$params  = array();
 			$options = array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
@@ -101,14 +101,14 @@ class indiceModel extends modelBase{
 			//------------------------------------------------------------------- Accionados del proceso--------------------------------------------------------------------
 
 			$sql_partes2 = ("
-			  SELECT
-			  info_suje.[A112NUMESUJE] AS cedula
-			  ,info_suje.[A112NOMBSUJE] AS nombre
-			  ,tipo_suje.[A057DESCSUJE] AS tipo
-			  FROM [$datosbd_2].[dbo].[T112DRSUJEPROC] AS info_suje
-			  INNER JOIN [$datosbd_2].[dbo].[T057BASUJEGENE] AS tipo_suje ON info_suje.[A112CODISUJE] = tipo_suje.A057CODISUJE
-			  WHERE info_suje.[A112LLAVPROC] = "."'$radicado'"."
-			  AND info_suje.[A112CODISUJE] = '0002';
+			SELECT
+			info_suje.[A112NUMESUJE] AS cedula
+			,info_suje.[A112NOMBSUJE] AS nombre
+			,tipo_suje.[A057DESCSUJE] AS tipo
+			FROM [$datosbd_2].[dbo].[T112DRSUJEPROC] AS info_suje
+			INNER JOIN [$datosbd_2].[dbo].[T057BASUJEGENE] AS tipo_suje ON info_suje.[A112CODISUJE] = tipo_suje.A057CODISUJE
+			WHERE info_suje.[A112LLAVPROC] = "."'$radicado'"."
+			AND info_suje.[A112CODISUJE] = '0002';
 			");
 			$params2  = array();
 			$options2 = array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
@@ -121,66 +121,74 @@ class indiceModel extends modelBase{
 			//Juzgado
 			$juzgado = "";
 			while( $row = sqlsrv_fetch_array($stmt) ){
-			  $juzgado = str_replace(" DE MANIZALES", "", strval($row['juzgado']));
-			  $juzgado = str_replace("FAMILIA DEL CIRCUITO", "FAMILIA", $juzgado);
-			  $juzgado = str_replace("JUEZ ", "", $juzgado);
-			  $juzgado = str_replace("JUZGADO   ", "JUZGADO ", $juzgado);
-			  $juzgado = str_replace("JUZGADO  ", "JUZGADO ", $juzgado);
-			  $juzgado = str_replace("MPAL DE MZLES -TUTELAS", "MUNICIPAL", $juzgado);
-			  $juzgado = str_replace("MUNICIPL", "MUNICIPAL", $juzgado);
+				$juzgado = str_replace(" DE MANIZALES", "", strval($row['juzgado']));
+				$juzgado = str_replace("FAMILIA DEL CIRCUITO", "FAMILIA", $juzgado);
+				$juzgado = str_replace("JUEZ ", "", $juzgado);
+				$juzgado = str_replace("JUZGADO   ", "JUZGADO ", $juzgado);
+				$juzgado = str_replace("JUZGADO  ", "JUZGADO ", $juzgado);
+				$juzgado = str_replace("MPAL DE MZLES -TUTELAS", "MUNICIPAL", $juzgado);
+				$juzgado = str_replace("MUNICIPL", "MUNICIPAL", $juzgado);
 				$juzgado = str_replace(" -TUTELAS", "", $juzgado);
-			  $juzgado = strtolower($juzgado);
-			  $juzgado = ucwords($juzgado);
-			  $body = $body.$juzgado."////";
+				$juzgado = str_replace(" CTO MZLES", " Del Circuito", $juzgado);
+				$juzgado = strtolower($juzgado);
+				$juzgado = ucwords($juzgado);
+				$body = $body.$juzgado."////";
 			}
 
-			// Establecer Subserie
-			$juzgado = strtoupper($juzgado);
-			if( strpos($juzgado, "MUNICIPAL") || strpos($juzgado, "MUNICIPL") ){
-				$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MÍNIMA Y MENOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
-			} else if( strpos($juzgado, "CIRCUITO") ){
-				$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MAYOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
-			} else if ( strpos($juzgado, "FAMILIA") ){
-				$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE FAMILIA")))."////";
+			if($juzgado == ""){
+				echo"300301";
 			} else {
-				//Radicado con instancia
-				$instancia = substr($radicado, 21);
-				if($instancia != "00"){
-					$especialidad = substr($radicado, 5, -14);
-					if($especialidad == "4003"){
-						$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MÍNIMA Y MENOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
-					} else if ($especialidad == "3103"){
-						$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MAYOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
-					} else if ($especialidad == "3110"){
-						$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE FAMILIA")))."////";
-					} else if ($especialidad == "2213"){
-						$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE REVISIÓN")))."////";
-					} else {
-						$body = $body.utf8_encode(ucwords(strtolower("No se encontró Subserie. ***PONER MANUAL***")))."////";
+
+				// Establecer Subserie
+				$juzgado = strtoupper($juzgado);
+				if( strpos($juzgado, "MUNICIPAL") || strpos($juzgado, "MUNICIPL") ){
+					$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MÍNIMA Y MENOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
+				} else if( strpos($juzgado, "CIRCUITO") ){
+					$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MAYOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
+				} else if ( strpos($juzgado, "FAMILIA") ){
+					$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE FAMILIA")))."////";
+				} else {
+					//Radicado con instancia
+					$instancia = substr($radicado, 21);
+					if($instancia != "00"){
+						$especialidad = substr($radicado, 5, -14);
+						if($especialidad == "4003"){
+							$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MÍNIMA Y MENOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
+						} else if ($especialidad == "3103"){
+							$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES CONTENCIOSOS DE MAYOR CUANTÍA JURISDICCIÓN CIVIL")))."////";
+						} else if ($especialidad == "3110"){
+							$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE FAMILIA")))."////";
+						} else if ($especialidad == "2213"){
+							$body = $body.utf8_encode(ucwords(strtolower("EXPEDIENTES DE PROCESOS JUDICIALES DE REVISIÓN")))."////";
+						} else {
+							$body = $body.utf8_encode(ucwords(strtolower("No se encontró Subserie. ***PONER MANUAL***")))."////";
+						}
+					} else{ // Complementar subserie de procesos de otras especialidades
+						$body = $body.utf8_encode(ucwords("***PENDIENTE ESTABLECER SUBSERIE***"))."////";
 					}
-				} else{ // Complementar subserie de procesos de otras especialidades
-					 	$body = $body.utf8_encode(ucwords("***PENDIENTE ESTABLECER SUBSERIE***"))."////";
 				}
+
+				//Relacionar accionantes del proceso
+				$accionantes = "";
+				while( $row2 = sqlsrv_fetch_array($stmt1) ){
+					$accionantes = $accionantes.$row2['nombre']." ";
+				}
+				$accionantes = strtolower($accionantes);
+				$accionantes = ucwords($accionantes);
+				$body = $body.$accionantes."////";
+
+				//Relacionar accionados del proceso
+				$accionados  = "";
+				while( $row3 = sqlsrv_fetch_array($stmt2) ){
+					$accionados = $accionados.$row3['nombre']." ";
+				}
+				$accionados = strtolower($accionados);
+				$accionados = ucwords($accionados);
+				$body = $body.$accionados."////";
+				echo $body;
+
 			}
 
-			//Relacionar accionantes del proceso
-			$accionantes = "";
-			while( $row2 = sqlsrv_fetch_array($stmt1) ){
-				$accionantes = $accionantes.$row2['nombre']." ";
-			}
-			$accionantes = strtolower($accionantes);
-			$accionantes = ucwords($accionantes);
-			$body = $body.$accionantes."////";
-
-			//Relacionar accionados del proceso
-			$accionados  = "";
-			while( $row3 = sqlsrv_fetch_array($stmt2) ){
-				$accionados = $accionados.$row3['nombre']." ";
-			}
-			$accionados = strtolower($accionados);
-			$accionados = ucwords($accionados);
-			$body = $body.$accionados."////";
-			echo $body;
 		} else {
 			echo"200201";
 		}
