@@ -18,8 +18,8 @@ class indiceModel extends modelBase{
 		$body = "";
 
 		//----------------------------------------------------------------------------------Arreglos de Especialidad-----------------------------------------------------------------------
-		$vect_tca = array();
-		$vect_disc = array();
+		$vect_tca = array("XXXX");
+		$vect_disc = array("XXXX");
 		$vect_jepms = array("3187");
 		$vect_penal = array("4088", "4071", "4009", "4004", "4018", "4007");
 		$vect_laboral = array("3105", "2205", "4105");
