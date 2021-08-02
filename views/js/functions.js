@@ -7,15 +7,43 @@
 function cleanAlert()
 {
 	setTimeout(function(){
-		$('#acta').css({'border':'1px solid #ccc'});
-		$('#radicado').css({'border':'1px solid #ccc'});
-		$('#ndocs').css({'border':'1px solid #ccc'});
+		$("#radicado").removeClass("is-invalid");
+		$("#despacho").removeClass("is-invalid");
+		$("#partes1").removeClass("is-invalid");
+		$("#serie").removeClass("is-invalid");
+		$("#partes2").removeClass("is-invalid");
 		$('#resultfrm').css({'display':'none'});
 	}, 4000);
 }
 
+function validRad()
+{
+  var radicado = document.getElementById("radicado").value.trim();
+  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  for (var i = 0 ; i <= (radicado.length - 1); i++){
+    var val = radicado[i];
+    if (numbers.indexOf(val) != -1) {
+      $("#radicado").removeClass("is-invalid");
+      cleanAlert();
+    } else {
+      $("#radicado").removeClass("is-valid");
+      $("#radicado").addClass("is-invalid");
+      $('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin-left':'2%'});
+      $('#resultfrm').html("Solo se permiten números en el campo 'Radicado'.");
+      document.getElementById("radicado").value = "";
+			cleanAlert();
+    }
+  }
+}
+
 function loadData()
 {
+	document.getElementById("despacho").value = "";
+	document.getElementById("partes1").value = "";
+	document.getElementById("terceros").value = "";
+	document.getElementById("serie").value = "";
+	document.getElementById("partes2").value = "";
 	var esp      = document.getElementById('esp').value.trim();
 	var radicado = document.getElementById("radicado").value;
 
@@ -64,7 +92,14 @@ function loadData()
 								document.getElementById("despacho").value = "";
 							}
 							if(vect[1].trim() != ""){
-								document.getElementById("serie").value = vect[1];
+								if(vect[1].indexOf("<select") != -1 || vect[1].indexOf("<input") != -1){
+									if(document.getElementById("serie")){
+										document.getElementById("serie").remove();
+										document.getElementById("ToSerie").innerHTML = vect[1];
+									}
+								} else {
+									document.getElementById("serie").value = vect[1];
+								}
 							} else {
 								document.getElementById("serie").value = "";
 							}
@@ -102,22 +137,41 @@ function GuardarIndice()
 		$('#resultfrm').html("No se encontró una especialidad para generar el Índice Electrónico.");
 		cleanAlert();
 	} else if(radicado == ""){
-		$('#radicado').css({'border':'1px solid #a94442'});
+		$("#radicado").addClass("is-invalid");
 		$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
-		$('#resultfrm').html("Debe digitar el radicado para poder generar el índice.");
+		$('#resultfrm').html("El radicado es obligatorio.");
 		cleanAlert();
 	} else if(radicado.length < 23){
-		$('#radicado').css({'border':'1px solid #a94442'});
+		$("#radicado").addClass("is-invalid");
 		$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
-		$('#resultfrm').html("Debe digitar los 23 digitos del radicado para poder generar el índice.");
+		$('#resultfrm').html("Debe digitar los 23 digitos del radicado para generar el índice.");
 		cleanAlert();
 	} else if(despacho == "" || serie == "" || partes1 == "" || partes2 == ""){
+		if(despacho == ""){
+			$("#despacho").addClass("is-invalid");
+		} if(serie == ""){
+			$("#serie").addClass("is-invalid");
+		} if(partes1 == ""){
+			$("#partes1").addClass("is-invalid");
+		} if(partes2 == ""){
+			$("#partes2").addClass("is-invalid");
+		}
 		$('#resultfrm').css({'border':'1px solid #ebccd1','background-color':'#f2dede','color':'#a94442','padding':'5px','display':'block','width':'96%','margin':'10px 2%'});
 		$('#resultfrm').html("Todos los campos excepto 'Terceros Intervinietes', son obligatorios.");
 		cleanAlert();
 	} else {
-		$("#IEGen").submit();
-		location.reload();
+		$("#radicado").addClass("is-valid");
+		$("#ciudad").addClass("is-valid");
+		$("#despacho").addClass("is-valid");
+		$("#partes1").addClass("is-valid");
+		$("#terceros").addClass("is-valid");
+		$("#serie").addClass("is-valid");
+		$("#partes2").addClass("is-valid");
+		$('#load').css({'display':'bloack'});
+		setTimeout(function(){
+			$("#IEGen").submit();
+			location.reload();
+		}, 1000);
 	}
 
 }

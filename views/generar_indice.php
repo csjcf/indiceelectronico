@@ -46,7 +46,7 @@
                     <input type="hidden" id="esp" name="esp" value="<?php echo $especialidad; ?>"/>
                     <label for="radicado" style="font-weight: bold; margin-bottom: 0px;">Radicado del proceso</label>
                     <small id="partes1Help" class="form-text text-muted" style="margin-top: 0px;">Los 23 digitos sin espacios ni ningún caractér diferente a números</small>
-                    <input type="text" class="form-control" id="radicado" name="radicado" onkeyup="loadData();" />
+                    <input type="text" class="form-control" id="radicado" name="radicado" onkeyup="loadData(); validRad();" />
                   </div>
                   <div class="form-group">
                     <label for="ciudad" style="font-weight: bold; margin-bottom: 0px;">Ciudad</label>
@@ -74,7 +74,9 @@
                   <div class="form-group">
                     <label for="serie" style="font-weight: bold; margin-bottom: 0px;">Serie o Subserie documental</label>
                     <small id="partes1Help" class="form-text text-muted" style="margin-top: 0px;">Clasificación o tipo de proceso judicial</small>
-                    <input type="text" class="form-control" id="serie" name="serie" />
+                    <div id="ToSerie">
+                      <input type="text" class="form-control" id="serie" name="serie" />
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="partes2" style="font-weight: bold; margin-bottom: 0px;">Partes Procesales (Parte B)</label>
@@ -89,7 +91,7 @@
               <div class="card-footer">
                 <div id="env" class="btn btn-primary float-right" onclick="GuardarIndice();" style='min-width: 90px; background-color: #236093; cursor:pointer;'>Generar Índice</div>
               </div>
-              <div id="load">
+              <div id="load" style="margin-top: 1%;">
                 <img src="views/img/cargando.gif" class="loading">
               </div>
             </form>
@@ -103,7 +105,7 @@
 
     <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-12">
       <footer class="main-footer" style="margin-left: 0px; line-height: 5px;">
-        <p align="center">Rama Judicial del Poder Público</p>
+        <p align="center"><strong>Rama Judicial del Poder Público</strong></p>
         <p align="center">Micrositio de generación del Índice Electrónico del Expediente Judicial.</p>
         <p align="center"><?php echo date('Y'); ?> Todos los derechos reservados.</p><br>
       </footer>
