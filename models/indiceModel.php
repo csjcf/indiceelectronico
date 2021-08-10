@@ -149,28 +149,68 @@ class indiceModel extends modelBase{
 					// Civil y Familia
 					$especialidad = substr($radicado, 5, -14);
 					if($especialidad == "4003"){
-						if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
-							$body = $body."Proceso disciplinario contra empleados////";
+						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
+							if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
+								$body = $body."Acción de Hábeas Corpus////";
+								$lb++;
+							} else {
+								$body = $body."Acción de Tutela////";
+								$lb++;
+							}
 						} else {
-							$body = $body."Expedientes de Procesos Judiciales Contenciosos de Mínima y Menor Cuantía////";
+							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
+								$body = $body."Proceso disciplinario contra empleados////";
+							} else {
+								$body = $body."Expedientes de Procesos Judiciales Contenciosos de Mínima y Menor Cuantía////";
+							}
 						}
 					} else if ($especialidad == "3103"){
-						if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
-							$body = $body."Proceso disciplinario contra empleados////";
-						} else {
-							$body = $body."Expedientes de Procesos Judiciales Contenciosos de Mayor Cuantía Jurisdicción Civil////";
+						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
+							if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
+								$body = $body."Acción de Hábeas Corpus////";
+								$lb++;
+							} else {
+								$body = $body."Acción de Tutela////";
+								$lb++;
+							}
+						} else{
+							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
+								$body = $body."Proceso disciplinario contra empleados////";
+							} else {
+								$body = $body."Expedientes de Procesos Judiciales Contenciosos de Mayor Cuantía Jurisdicción Civil////";
+							}
 						}
 					} else if ($especialidad == "3110"){
-						if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
-							$body = $body."Proceso disciplinario contra empleados////";
+						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
+						  if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
+						    $body = $body."Acción de Hábeas Corpus////";
+						    $lb++;
+						  } else {
+						    $body = $body."Acción de Tutela////";
+						    $lb++;
+						  }
 						} else {
-							$body = $body."Expedientes de Procesos Judiciales de Familia////";
+							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
+								$body = $body."Proceso disciplinario contra empleados////";
+							} else {
+								$body = $body."Expedientes de Procesos Judiciales de Familia////";
+							}
 						}
 					} else if ($especialidad == "2213"){
-						if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
-							$body = $body."Proceso disciplinario contra empleados////";
+						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
+						  if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
+						    $body = $body."Acción de Hábeas Corpus////";
+						    $lb++;
+						  } else {
+						    $body = $body."Acción de Tutela////";
+						    $lb++;
+						  }
 						} else {
-							$body = $body."Expedientes de Procesos Judiciales de Revisión////";
+							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
+								$body = $body."Proceso disciplinario contra empleados////";
+							} else {
+								$body = $body."Expedientes de Procesos Judiciales de Revisión////";
+							}
 						}
 					} else{
 						// Fin Civil y Familia
