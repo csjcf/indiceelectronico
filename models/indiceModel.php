@@ -152,10 +152,8 @@ class indiceModel extends modelBase{
 						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
 							if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
 								$body = $body."Acción de Hábeas Corpus////";
-								$lb++;
 							} else {
 								$body = $body."Acción de Tutela////";
-								$lb++;
 							}
 						} else {
 							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
@@ -168,10 +166,8 @@ class indiceModel extends modelBase{
 						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
 							if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
 								$body = $body."Acción de Hábeas Corpus////";
-								$lb++;
 							} else {
 								$body = $body."Acción de Tutela////";
-								$lb++;
 							}
 						} else{
 							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
@@ -184,10 +180,8 @@ class indiceModel extends modelBase{
 						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
 						  if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
 						    $body = $body."Acción de Hábeas Corpus////";
-						    $lb++;
 						  } else {
 						    $body = $body."Acción de Tutela////";
-						    $lb++;
 						  }
 						} else {
 							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
@@ -200,10 +194,8 @@ class indiceModel extends modelBase{
 						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
 						  if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
 						    $body = $body."Acción de Hábeas Corpus////";
-						    $lb++;
 						  } else {
 						    $body = $body."Acción de Tutela////";
-						    $lb++;
 						  }
 						} else {
 							if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
