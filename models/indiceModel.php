@@ -462,7 +462,11 @@ class indiceModel extends modelBase{
 		$radicado = $_POST['radicado'];
 		$ciudad   = $_POST['ciudad'];
 		$despacho = $_POST['despacho'];
-		$serie    = $_POST['serie'];
+		if($_POST['serie'] != ""){
+			$serie  = $_POST['serie'];
+		} else {
+			$serie  = $_POST['ToSelectSerie'];
+		}
 		$partes1  = $_POST['partes1'];
 		$partes2  = $_POST['partes2'];
 		$terceros = $_POST['terceros'];
