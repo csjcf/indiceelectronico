@@ -132,6 +132,7 @@ class indiceModel extends modelBase{
 				$juzgado = str_replace("MUNICIPL", "MUNICIPAL", $juzgado);
 				$juzgado = str_replace(" -TUTELAS", "", $juzgado);
 				$juzgado = str_replace(" CTO MZLES", " Del Circuito", $juzgado);
+				$juzgado = str_replace("- Juzg", "Juzgado", $juzgado);
 				$juzgado = strtolower($juzgado);
 				$juzgado = ucwords($juzgado);
 				$body = $body.$juzgado."////";
