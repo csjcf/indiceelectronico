@@ -32,8 +32,8 @@ class indiceModel extends modelBase{
 			$idbd = 11;
 		} else if( in_array(substr($especialidad, 5, -3), $vect_laboral) ){
 			$idbd = 7;
-		} else if( in_array(substr($especialidad, 5, -3), $vect_administrativo) ){
-			$idbd = 16;
+		} else if( in_array(substr($especialidad, 5, -3), $vect_tca) ){
+			$idbd = 12;
 		} else if( in_array(substr($especialidad, 5, -3), $vect_civil_familia) ){
 			$idbd = 7;
 		} else if( in_array(substr($especialidad, 5, -3), $vect_infancia) ){
@@ -42,8 +42,8 @@ class indiceModel extends modelBase{
 			$idbd = 14;
 		} else if( in_array(substr($especialidad, 5, -3), $vect_sala_penal) ){
 			$idbd = 15;
-		} else if( in_array(substr($especialidad, 5, -3), $vect_tca) ){
-			$idbd = 12;
+		} else if( in_array(substr($especialidad, 5, -3), $vect_administrativo) ){
+			$idbd = 16;
 		} else if( in_array(substr($especialidad, 5, -3), $vect_disc) ){            // FALTA
 			$idbd = 17;
 		}
