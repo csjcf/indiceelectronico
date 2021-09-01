@@ -9,7 +9,8 @@ class indexModel extends modelBase{
 		$select = $mbd->prepare('SELECT nombre_usuario FROM pa_usuario WHERE id = :id');
 		$select->bindParam(':id', $id);
 		$select->execute();
-		echo $select->fetch();
+		$response = $select->fetch();
+		return $response[0];
 	}
 
 
