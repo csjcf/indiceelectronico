@@ -2,14 +2,14 @@
 class indexController extends controllerBase
 {
 
-	/*-------------------- Login User --------------------*/
+	/*-------------------- Index --------------------*/
 	public function index()
 	{
 		require 'models/indexModel.php';
 		$model = new indexModel();
 		$id = $_GET['esp'];
 		$especialidad = $model->get_especialidad($id);
-		$this->view->show("generar_indice.php", compact('especialidad'));
+		$this->view->show("generar_indice.php", compact('id', 'especialidad'));
 	}
 
 	/*-------------------- Ruta Base --------------------*/

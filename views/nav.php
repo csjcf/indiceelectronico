@@ -8,7 +8,7 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<?php
-				echo "<a href='index.php?controller=index&action=index&esp=".$especialidad."' class='nav-link'>Generar Índice Electrónico</a>";
+				echo "<a href='index.php?controller=index&action=index&esp=".$id."' class='nav-link'>Generar Índice Electrónico</a>";
 				?>
 			</li>
 		</ul>
