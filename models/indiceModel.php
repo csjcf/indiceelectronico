@@ -390,14 +390,19 @@ class indiceModel extends modelBase{
 						}
 					}
 				} else if($idbd == 16){ // Tribunal Contencioso Administrativo
-
+					$lb = 0;
 					if(trim($tipoProceso) == "Proceso Disciplinario" || trim($tipoProceso) == "Disciplinario"){
 						$body = $body."Proceso disciplinario contra empleados////";
+						$lb++;
 					} else {
-						$lb = 0;
-						if(trim($tipoProceso) == "Constitucionales"){
-							$body = $body.trim($claseProceso)."////";
-							$lb++;
+						if(trim($tipoProceso) == "Orden Constitucional y Legal"){
+							if(strpos(trim($claseProceso), 'Habeas Corpus') !== false){
+								$body = $body."<input type='text' class='form-control' id='serie' name='serie' value='Acción de Hábeas Corpus'/>////";
+								$lb++;
+							} else {
+								$body = $body."<input type='text' class='form-control' id='serie' name='serie' value='Acción de Tutela'/>////";
+								$lb++;
+							}
 						} else {
 							if(trim($claseProceso) == "CONCILIACIONES PREJUDICIALES"){
 								$body = $body."Conciliaciones Extrajudiciales////";
