@@ -40,7 +40,7 @@
 
             <div style="margin: 10px 10px;  font-weight: bold;">Funcionamiento general</div>
             <p align="justify" style="margin: 10px 10px;">El siguiente video expone los principales requisitos para el cumplimiento del protocolo del Índice Electrónico del Expediente Judicial y un ejemplo práctico de uso de la herramienta del mismo.</p>
-            <video style="width: 96%; margin-left: 2%; height: auto;" controls>
+            <video style="width: 96%; margin-left: 2%; height: auto;" controls poster="views/img/poster.png">
               <source src="views/media/ie.mp4" type="video/mp4">
               No fue posible cargar el video. Intente en otro navegador.
             </video>
