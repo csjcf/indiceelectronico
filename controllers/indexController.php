@@ -12,6 +12,12 @@ class indexController extends controllerBase
 		$this->view->show("generar_indice.php", compact('id', 'especialidad'));
 	}
 
+	public function faqs()
+	{
+		$id = $_GET['esp'];
+		$this->view->show("faqs.php", compact('id'));
+	}
+
 	/*-------------------- Ruta Base --------------------*/
 	public function ruta_base()
 	{

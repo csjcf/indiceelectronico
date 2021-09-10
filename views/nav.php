@@ -11,6 +11,11 @@
 				echo "<a href='index.php?controller=index&action=index&esp=".$id."' class='nav-link'>Generar Índice Electrónico</a>";
 				?>
 			</li>
+			<li class="nav-item" style="border: solid 1px #236093;">
+				<?php
+				echo "<a href='index.php?controller=index&action=faqs&esp=".$id."' class='nav-link'>Instrucciones de uso - Soporte</a>";
+				?>
+			</li>
 		</ul>
 	</div>
 </nav>
