@@ -55,7 +55,7 @@
             <div class="separator"></div>
             <div style="margin: 10px 10px;  font-weight: bold;">¿No logra hacer uso de la herramienta de ninguna forma?</div>
             <p align="justify" style="margin: 10px 10px;">
-            Por favor, póngase en contácto al correo <span style="color: #007bff;">msebast@cendoj.ramajudicial.gov.co</span> con el asunto "Soporte Aplicación IE" y asegúrese de incluir un teléfono de contacto y especificar el despacho judicial al que pertenece.
+            Por favor, póngase en contácto al correo <span style="color: #007bff;">csjcfma@cendoj.ramajudicial.gov.co</span> con el asunto "Soporte Aplicación IE" y asegúrese de incluir un teléfono de contacto y especificar el despacho judicial al que pertenece.
             </p>
 
 
